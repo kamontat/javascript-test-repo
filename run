@@ -10,4 +10,14 @@
 
 ! command -v "node" >/dev/null && echo "node is required" && exit 1
 
-node "$1/index.js"
+cases=("maximum/" "minimum/" "average/")
+
+if [[ "$1" == "all" ]]; then
+	for case in "${cases[@]}"; do
+		echo "--- start ${case} ---"
+		node "${case}index.js"
+		echo
+	done
+else
+	node "${1}index.js"
+fi
