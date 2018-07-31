@@ -10,18 +10,4 @@
 
 ! command -v "node" >/dev/null && echo "node is required" && exit 1
 
-join_path() {
-	echo "${1:+$1/}$2" | sed 's#//#/#g'
-}
-
-cases=("maximum/" "minimum/" "average/")
-
-if [[ "$1" == "all" ]]; then
-	for case in "${cases[@]}"; do
-		echo "--- start ${case} ---"
-		node "$(join_path "${case}" "index.js")"
-		echo
-	done
-else
-	node "$(join_path "${1}" "index.js")"
-fi
+node run.js "$@"
