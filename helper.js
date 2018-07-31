@@ -92,7 +92,7 @@ const setCaseDV = (name, data, value, expectation, fn) => {
   PrintCaseTitle(name)
 
   setV(value);
-  const result = execD(data, fn);
+  const result = execDV(data, fn);
 
   setE(expectation)
   return test(result)

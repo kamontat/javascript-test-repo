@@ -5,7 +5,10 @@ helper.reset()
 // first param  - array of oject that load from integer.json
 // second param - value to be searching
 function runnable(data, value) {
-  return 0
+  var value
+  for (i = 0; i < data.length; i++)
+    if (value === data[i].integer)
+      return i
 }
 
 helper.setCaseWithDataAndValue("search number 101004",
@@ -15,4 +18,7 @@ helper.setCaseWithDataAndValue("search number 125259",
   helper.loadInteger(), 125259, 70, runnable)
 
 helper.setCaseWithDataAndValue("search number 683413",
-  helper.loadInteger(), 683413, 20, runnable)
+  helper.loadInteger(), 683413, 19, runnable)
+
+helper.setCaseWithDataAndValue("search number 1",
+  helper.loadInteger(), 1, -1, runnable)
