@@ -9,9 +9,10 @@ const folderpath = __dirname
 
 const executeFile = (fileAbsolutePath) => {
   const name = path.basename(path.dirname(fileAbsolutePath)).replace("case-", "");
-  console.log(`------- ${color.FgYellow}Start ${name.padEnd(22)}${color.Reset} ------`);
+  console.log(`${color.Dim}-----------${color.Reset} ${color.FgYellow}Start ${name.padEnd(20)}${color.Reset}  ${color.Dim}-->${color.Reset}`);
   require(fileAbsolutePath);
-  console.log(`${color.Underscore}${color.Dim}Summary${color.Reset}: ${color.FgGreen}${color.Dim}pass=${helper.getResult().pass}${color.Reset}, ${color.FgRed}${color.Dim}fail=${helper.getResult().fail}${color.Reset}`);
+  console.log(`${color.Underscore}${color.Dim}Summary:${color.Reset} ${color.FgGreen}${color.Dim}pass=${helper.getResult().pass}${color.Reset}, ${color.FgRed}${color.Dim}fail=${helper.getResult().fail}${color.Reset}`);
+  console.log();
 }
 
 for (var i = 2; i < process.argv.length; i++) {
@@ -52,9 +53,13 @@ $ node run.js [-t] all
 }
 
 console.log();
-console.log(`${color.FgCyan}${color.Bright}Final summary:${color.Reset}
-${color.BgGreen}${color.FgWhite}Pass: ${helper.getSummary().pass}${color.Reset}
-${color.BgRed}${color.FgWhite}Fail: ${helper.getSummary().fail}${color.Reset}`);
+console.log(`${color.FgCyan}${color.Bright}Final summary:${color.Reset}`);
+if (helper.getSummary().pass != 0) {
+  console.log(`${color.BgGreen}${color.FgWhite}Pass: ${helper.getSummary().pass}${color.Reset}`);
+}
+if (helper.getSummary().fail != 0) {
+  console.log(`${color.BgRed}${color.FgWhite}Fail: ${helper.getSummary().fail}${color.Reset}`);
+}
 
 if (helper.getSummary().fail > 0) {
   process.exit(helper.getSummary().fail)

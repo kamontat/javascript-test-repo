@@ -53,11 +53,12 @@ const test = (result) => {
     fail++;
     console.error(`${color.FgRed}Failure!!${color.Reset}`);
     if (!CONSTANT_SHOW_SHORT) {
-      console.error(`Actual: 
-${result}
+      console.error(`${color.FgBlue}${color.Underscore}Actual:${color.Reset}
+${color.FgBlue}${result}${color.Reset}
       
-Expected: 
-${expected}`);
+${color.FgRed}${color.Underscore}Expected:${color.Reset}
+${color.FgRed}${expected}${color.Reset}
+`);
     };
 
   }
@@ -66,7 +67,7 @@ ${expected}`);
 }
 
 const PrintCaseTitle = (name) => {
-  process.stdout.write(`${color.FgMagenta}Run case ${color.Underscore}#${case_index++}${color.Reset} ${name.padEnd(30)}:  `);
+  process.stdout.write(`${color.FgMagenta}${color.Dim}Run case ${color.Underscore}#${case_index++}${color.Reset} ${name.padEnd(30)}:  `);
 };
 
 const setCaseV = (name, value, expectation, fn) => {
