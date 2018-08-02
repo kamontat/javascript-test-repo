@@ -24,6 +24,14 @@ const li = () => {
   return require("./_res/integer.json");
 };
 
+const lia = () => {
+  return require("./_res/integer-array.json").array;
+};
+
+const lsa = () => {
+  return require("./_res/string-array.json").array;
+};
+
 const execV = (fn) => {
   return fn(value);
 };
@@ -123,6 +131,8 @@ exports = module.exports = {
   toggleShow: toggleShow,
   loadDouble: ld,
   loadInteger: li,
+  loadArrayInteger: lia,
+  loadArrayString: lsa,
   setCaseWithValue: setCaseV,
   setCaseWithData: setCaseD,
   setCaseWithDataAndValue: setCaseDV,
