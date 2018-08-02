@@ -1,29 +1,29 @@
-const color = require("../color");
+const color = require("./colorConstants");
 
 exports = module.exports = {
   getSuccessColor: () => {
     return `${color.FgGreen}Success!!${color.Reset}`;
   },
   getFailureColor: () => {
-    return `${color.FgRed}${color.Blink}Failure!!${color.Reset}`;
+    return `${color.FgRed}Failure!!${color.Reset}`;
   },
   getTimeColor: (time) => {
     return `${color.Dim}(${time})${color.Reset}`
   },
   getCaseTitleColor: (index) => {
-    return `${color.FgMagenta}${color.Dim}Case ${color.Underscore}#${index}${color.Reset}`;
+    return `${color.FgCyan}${color.Dim}Case ${color.Underscore}#${index}${color.Reset}`;
   },
   getActualTitleColor: () => {
-    return `${color.FgBlue}${color.Underscore}Actual:${color.Reset}`;
+    return `${color.FgGreen}${color.Underscore}Actual:${color.Reset}`;
   },
   getActualColor: (actual) => {
-    return `${color.FgBlue}${actual}${color.Reset}`;
+    return `${color.FgGreen}${color.Dim}${actual}${color.Reset}`;
   },
   getExpectedTitleColor: () => {
     return `${color.FgRed}${color.Underscore}Actual:${color.Reset}`;
   },
   getExpectedColor: (expected) => {
-    return `${color.FgRed}${expected}${color.Reset}`;
+    return `${color.FgRed}${color.Dim}${expected}${color.Reset}`;
   },
   getFileColor: (filename) => {
     return `${color.FgRed}${filename}${color.Reset}`;

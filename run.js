@@ -7,6 +7,8 @@ const helper = require("./helper");
 const index = "index.js"
 const folderpath = __dirname
 
+let execute = false;
+
 const help = () => {
   return `# run script
 
@@ -79,12 +81,6 @@ const executeFile = (fileAbsolutePath) => {
   }
 }
 
-if (process.argv.length <= 2) {
-  filterCasesAndRun((val) => {
-    return val.includes("case-");
-  });
-}
-
 for (var i = 2; i < process.argv.length; i++) {
   const paramater = process.argv[i];
   // file of case
@@ -92,25 +88,43 @@ for (var i = 2; i < process.argv.length; i++) {
 
   if (fs.existsSync(filecase)) {
     executeFile(filecase);
+    execute = true;
   } else {
     if (paramater == "--toggle" || paramater == "-t") {
       helper.toggleShowResult();
     } else if (paramater == "--id" || paramater == "-i") {
       let id = process.argv[++i];
+      if (id == undefined) {
+        console.error("ID must specify. In term of x.x.x");
+        process.exit(1);
+      }
+
       filterCasesAndRun((val) => {
         return val.includes("case-" + id);
       });
+      execute = true;
     } else if (paramater == "all") {
       filterCasesAndRun((val) => {
         return val.includes("case-");
       });
+      execute = true;
     } else if (paramater == "help" || paramater == "--help" || paramater == "-h") {
       console.log(help());
+      execute = true;
       return;
     } else {
-      console.log(paramater);
+      console.log(`Parameter: ${paramater} is not avalible yet!`);
+      execute = true;
+      process.exit(1);
     }
   }
+}
+
+// default if run with no parameters
+if (!execute) {
+  filterCasesAndRun((val) => {
+    return val.includes("case-");
+  });
 }
 
 let summary = helper.summaryCase()

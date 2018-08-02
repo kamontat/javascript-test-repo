@@ -34,7 +34,8 @@ class Test {
 ${color.getActualColor(this.actual)}
 
 ${color.getExpectedTitleColor()}
-${color.getExpectedColor(this.expected)}`;
+${color.getExpectedColor(this.expected)}
+`;
   }
 }
 
