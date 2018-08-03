@@ -20,7 +20,7 @@ exports = module.exports = {
     return `${color.FgGreen}${color.Dim}${actual}${color.Reset}`;
   },
   getExpectedTitleColor: () => {
-    return `${color.FgRed}${color.Underscore}Actual:${color.Reset}`;
+    return `${color.FgRed}${color.Underscore}Expected:${color.Reset}`;
   },
   getExpectedColor: (expected) => {
     return `${color.FgRed}${color.Dim}${expected}${color.Reset}`;

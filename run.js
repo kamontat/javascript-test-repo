@@ -12,16 +12,20 @@ let execute = false;
 const help = () => {
   return `# run script
 
-$ node ${color.getFileColor("run.js")} [${color.getOptionColor("-t")}] ${color.getArgumentColor("<case-*...>")}
-$ node ${color.getFileColor("run.js")} [${color.getOptionColor("-t")}] [${color.getOptionColor("-i")}] ${color.getArgumentColor("<x.x.x>")}
-$ node ${color.getFileColor("run.js")} [${color.getOptionColor("-t")}] ${color.getArgumentColor("all")}
+$ node ${color.getFileColor("run.js")} [${color.getOptionColor("-t")}] [${color.getOptionColor("-ns")}|${color.getOptionColor("-ms")}|${color.getOptionColor("-sec")}] ${color.getArgumentColor("<case-*...>")}
+$ node ${color.getFileColor("run.js")} [${color.getOptionColor("-t")}] [${color.getOptionColor("-ns")}|${color.getOptionColor("-ms")}|${color.getOptionColor("-sec")}] [${color.getOptionColor("-i")}] ${color.getArgumentColor("<x.x.x>")}
+$ node ${color.getFileColor("run.js")} [${color.getOptionColor("-t")}] [${color.getOptionColor("-ns")}|${color.getOptionColor("-ms")}|${color.getOptionColor("-sec")}] ${color.getArgumentColor("all")}
 
 # option
-  ${color.getOptionColor("-t")} => toggle to show only result, (not diff)
-  ${color.getOptionColor("-t")} => will test only case that start with specify id
-     => example: ${color.getExampleColor("-i 2.1.1")} mean test     id 2.1.1
-     => example: ${color.getExampleColor("-i 1.4")}   mean test all id 1.4.x
-     => example: ${color.getExampleColor("-i 1")}     mean test all id 1.x.x
+  ${color.getOptionColor("-t")}   => toggle to show different of result.
+  ${color.getOptionColor("-t")}   => will test only case that start with specify id
+       => example: ${color.getExampleColor("-i 2.1.1")} mean test     id 2.1.1
+       => example: ${color.getExampleColor("-i 1.4")}   mean test all id 1.4.x
+       => example: ${color.getExampleColor("-i 1")}     mean test all id 1.x.x
+  ${color.getOptionColor("-ns")}  => toggle time to nanosecond
+  ${color.getOptionColor("-ms")}  => toggle time to millisecond
+  ${color.getOptionColor("-sec")} => toggle time to second
+
   `;
 }
 
@@ -92,6 +96,12 @@ for (var i = 2; i < process.argv.length; i++) {
   } else {
     if (paramater == "--toggle" || paramater == "-t") {
       helper.toggleShowResult();
+    } else if (paramater == "--nanosecond" || paramater == "-ns") {
+      helper._time.toggleOutputToNS();
+    } else if (paramater == "--millisecond" || paramater == "-ms") {
+      helper._time.toggleOutputToMS();
+    } else if (paramater == "--second" || paramater == "-sec") {
+      helper._time.toggleOutputToSEC();
     } else if (paramater == "--id" || paramater == "-i") {
       let id = process.argv[++i];
       if (id == undefined) {
@@ -140,7 +150,7 @@ if (summary.hasFail) {
 }
 
 if (summary.time.timeExist()) {
-  console.log(`${color.getSummaryTimeColor(summary.time.getMiliSecondTimeString().total + " ms")}`);
+  console.log(`${color.getSummaryTimeColor(summary.time.getTimeToString(true, true).total)}`);
 }
 
 if (helper.getResult().overall.fail > 0) {

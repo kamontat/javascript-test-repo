@@ -25,10 +25,10 @@ class Helper {
   _test() {
     if (this._testModule.run()) {
       this._pass++;
-      console.log(`${color.getSuccessColor()} ${color.getTimeColor(this._time.getMiliSecondTimeString().time + " ms")}`);
+      console.log(`${color.getSuccessColor()} ${color.getTimeColor(this._time.getTimeToString(true, true).time)}`);
     } else {
       this._fail++;
-      console.log(`${color.getFailureColor()} ${color.getTimeColor(this._time.getMiliSecondTimeString().time + " ms")}`);
+      console.log(`${color.getFailureColor()} ${color.getTimeColor(this._time.getTimeToString(true, true).time)}`);
       if (!this.isShortResult()) console.log(this._testModule.getCompareString());
     }
   }
