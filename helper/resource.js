@@ -20,11 +20,11 @@ class Resource {
   }
 
   loadStringArray() {
-    this.data = this._loadResource("string-array.json")
+    this.data = this._loadResource("string-array.json").array
   }
 
   loadIntegerArray() {
-    this.data = this._loadResource("integer-array.json")
+    this.data = this._loadResource("integer-array.json").array
   }
 }
 
