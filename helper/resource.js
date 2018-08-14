@@ -3,6 +3,10 @@ class Resource {
     this.data = null;
   }
 
+  reset() {
+    this.data = null;
+  }
+
   isExist() {
     return this.data != null;
   }
