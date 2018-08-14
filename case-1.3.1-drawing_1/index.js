@@ -11,7 +11,14 @@ const method = (helper) => {
 
   /* set runnable function with resource and value */
   helper.setRunnable((size) => {
-    return dot + "\n";
+    let square = ""
+    for (let i = 0; i < size; i++) {
+      for (let j = 0; j < size; j++) {
+        square += dot
+      }
+      square += "\n"
+    }
+    return square
   })
 
   helper.addRunnableValue(4)
