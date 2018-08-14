@@ -105,6 +105,8 @@ class Helper {
     // reset
     this._caseIndex = 0;
     this._pass = this._fail = 0;
+
+    this._resource.reset()
   }
 
   endCase() {
