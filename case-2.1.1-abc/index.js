@@ -24,7 +24,7 @@ const method = (helper) => {
 
   helper.addRunnableValue([8, 1, 3])
   helper.setTestLabel("find ABC of 8 1 3")
-  helper.setTestExpected("BCA")
+  helper.setTestExpected("CAB")
   helper.test()
 
   helper.addRunnableValue([9, 0, -4])
