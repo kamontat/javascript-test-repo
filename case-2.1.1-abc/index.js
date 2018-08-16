@@ -9,7 +9,12 @@ const method = (helper) => {
 
   /* set runnable function with resource and value */
   helper.setRunnable(function (value1) {
-    return "ABC"
+    A = value1[0]
+    B = value1[1]
+    C = value1[2]
+    console.log(A, B, C)
+
+
   })
 
   helper.addRunnableValue([3, 5, 6])
