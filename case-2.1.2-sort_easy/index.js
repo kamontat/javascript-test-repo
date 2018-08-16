@@ -12,8 +12,8 @@ const method = (helper) => {
 
   /* set runnable function with resource and value */
   helper.setRunnable(function (resource) {
-    let a = resource.sort((a, b) => a - b)
-    return a
+    // let a = resource.sort((a, b) => a - b)
+    return ""
   })
 
   /* set test label */
