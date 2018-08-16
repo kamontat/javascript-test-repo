@@ -13,10 +13,10 @@ const method = (helper) => {
   helper.setRunnable((size) => {
     let square = ""
     for (let i = 0; i < size; i++) {
-      for (let j = 0; j < size; j++) {
+      for (let j = 0; j < size - 1; j++) {
         square += dot + " "
       }
-      square += "\n"
+      square += dot + "\n"
     }
     return square
 
